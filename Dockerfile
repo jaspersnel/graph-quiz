@@ -11,6 +11,6 @@ RUN echo $SSH_KEY | base64 -d
 RUN ssh-agent sh -c 'echo $SSH_KEY | base64 -d | ssh-add - ; npm install'
 RUN cp .env.example .env
 RUN php artisan key:generate
-RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql
+RUN docker-php-ext-install pdo pdo_mysql
 EXPOSE 80
 CMD php artisan migrate:fresh --seed && php artisan serve
