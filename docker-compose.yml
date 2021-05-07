@@ -16,7 +16,7 @@ services:
       MYSQL_DATABASE: 'db'
       MYSQL_USER: 'um-user'
       MYSQL_PASSWORD: '6rQR5JNT'
-      MYSQL_ROOT_PASSWORD: '6rQR5JNTß'
+      MYSQL_ROOT_PASSWORD: '6rQR5JNT'
     ports:
       - '3306:3306'
     volumes:
