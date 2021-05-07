@@ -9,6 +9,9 @@ services:
       - "80:80"
     depends_on:
       - db
+    restart: on-failure
+    volumes:
+      - .env.example:/app/.env
   db:
     image: mysql:5.7
     restart: always
