@@ -1,11 +1,14 @@
-FROM php:7.3-fpm
-RUN apt-get update -y && apt-get install -y libmcrypt-dev openssl
-#RUN docker-php-ext-install pdo mcrypt mbstring
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-#RUN docker-php-ext-install pdo mcrypt mbstring
+FROM composer
+ARG SSH_KEY
 WORKDIR /app
-COPY . /app
-RUN composer install
-
-CMD php artisan serve --host=0.0.0.0 --port=8000
-EXPOSE 8000
+RUN ["git", "clone", "https://github.com/maastrichtlawtech/graph-quiz.git", "."]
+RUN ["composer", "install"]
+RUN ["apk", "update"]
+RUN ["apk", "add", "npm"]
+RUN apk add git openssh-client
+RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+RUN ssh-agent sh -c 'echo $SSH_KEY | base64 -d | ssh-add - ; npm install'
+RUN cp .env.example .env
+RUN php artisan key:generate
+EXPOSE 80
+CMD php artisan migrate:fresh --seed && php artisan serve

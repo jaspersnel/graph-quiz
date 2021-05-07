@@ -1,6 +1,23 @@
 version: "3.9"
 services:
   web:
-    build: .
+    build:
+      context: .
+      args:
+        - SSH_KEY=$SSH_KEY
     ports:
-      - "8000:8000"
+      - "80:80"
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'um-user'
+      MYSQL_PASSWORD: '6rQR5JNT'
+      MYSQL_ROOT_PASSWORD: '6rQR5JNTß'
+    ports:
+      - '3306:3306'
+    volumes:
+      - graphquiz-db:/var/lib/mysql
+volumes:
+  graphquiz-db:
