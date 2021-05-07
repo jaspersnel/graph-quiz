@@ -20,8 +20,6 @@ services:
       MYSQL_USER: 'um-user'
       MYSQL_PASSWORD: '6rQR5JNT'
       MYSQL_ROOT_PASSWORD: '6rQR5JNT'
-    ports:
-      - '3306:3306'
     volumes:
       - graphquiz-db:/var/lib/mysql
 volumes:
