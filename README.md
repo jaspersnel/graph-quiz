@@ -47,3 +47,7 @@ Run migrations with `php artisan migrate:fresh --seed`
 For development, the server can quickly be launched with Laravel's internal server using: `php artisan serve`.
 
 Alternatively it is possible to serve the application by using another web server like Nginx or Apache. Please refer to Laravel 8's documentation for further reference.
+
+### Docker and Kubernetes
+
+In order to generate Kubernetes configuration files, run `kompose convert --out kubernetes`. The Docker version of this tool can be tested using `docker compose up`.
