@@ -50,6 +50,6 @@ Alternatively it is possible to serve the application by using another web serve
 
 ### Docker and Kubernetes
 
-Make sure to export your GitHub secret in order to build the container: `export SSH_KEY=$(cat ~/.ssh/id_rsa.pub | base64)`.
+Make sure to export your SSH private key which you use to connect to GitHub in order to build the container: `export SSH_KEY=$(cat ~/.ssh/id_rsa | base64)`.
 
 In order to generate Kubernetes configuration files, run `kompose convert --out kubernetes/`. The Docker version of this tool can be tested using `docker compose up`.
