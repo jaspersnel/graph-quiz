@@ -10,7 +10,7 @@ RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
 RUN echo $SSH_KEY | base64 -d
 RUN ssh-agent sh -c 'echo $SSH_KEY | base64 -d | ssh-add - ; npm install'
 RUN cp .env.example .env
-RUN php artisan key:generate
+# RUN php artisan key:generate
 RUN docker-php-ext-install pdo pdo_mysql
 EXPOSE 80
-CMD php artisan migrate:fresh --seed && php artisan serve
+CMD php artisan key:generate && php artisan migrate:fresh --seed && php artisan serve --host=127.0.0.1 --port=8000
