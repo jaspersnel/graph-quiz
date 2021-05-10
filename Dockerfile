@@ -1,7 +1,7 @@
 FROM composer
 WORKDIR /app
 
-RUN ["git", "clone", "https://github.com/maastrichtlawtech/graph-quiz.git", "."]
+COPY ./* .
 RUN ["composer", "install"]
 
 RUN ["apk", "update"]
