@@ -6,12 +6,12 @@ services:
       args:
         - SSH_KEY=$SSH_KEY
     ports:
-      - "80:80"
+      - "8000:8000"
     depends_on:
       - db
     restart: on-failure
     volumes:
-      - .env.example:/app/.env
+      - ./.env.example:/app/.env
   db:
     image: mysql:5.7
     restart: always
@@ -20,7 +20,7 @@ services:
       MYSQL_USER: 'um-user'
       MYSQL_PASSWORD: '6rQR5JNT'
       MYSQL_ROOT_PASSWORD: '6rQR5JNT'
-    volumes:
-      - graphquiz-db:/var/lib/mysql
-volumes:
-  graphquiz-db:
+#     volumes:
+#       - graphquiz-db:/var/lib/mysql
+# volumes:
+#   graphquiz-db:
