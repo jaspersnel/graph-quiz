@@ -1,10 +1,7 @@
 version: "3"
 services:
   web:
-    build:
-      context: .
-      args:
-        - SSH_KEY=$SSH_KEY
+    image: jaspersnel/graph-quiz
     ports:
       - "8000:8000"
     depends_on:
