@@ -7,14 +7,12 @@ services:
     depends_on:
       - db
     restart: on-failure
-    volumes:
-      - ./.env.example:/app/.env
   db:
     image: mysql:5.7
     restart: always
     environment:
       MYSQL_DATABASE: 'db'
-      MYSQL_USER: 'um-user'
+      MYSQL_USER: 'umuser'
       MYSQL_PASSWORD: '6rQR5JNT'
       MYSQL_ROOT_PASSWORD: '6rQR5JNT'
 #     volumes:
