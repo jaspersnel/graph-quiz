@@ -1,12 +1,15 @@
 version: "3"
 services:
   web:
-    image: jaspersnel/graph-quiz
+    build: .
+    # image: jaspersnel/graph-quiz-test-laravel
     ports:
       - "8000:8000"
     depends_on:
       - db
     restart: on-failure
+    volumes:
+      - ./.env.example:/app/.env
 
   db:
     image: mysql:5.7
