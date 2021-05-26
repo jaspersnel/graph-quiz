@@ -16,11 +16,9 @@ services:
       MYSQL_USER: 'umuser'
       MYSQL_PASSWORD: '6rQR5JNT'
       MYSQL_ROOT_PASSWORD: '6rQR5JNT'
-#     volumes:
-#       - graphquiz-db:/var/lib/mysql
-# volumes:
-#   graphquiz-db:
-  
+    volumes:
+      - graphquiz-db:/var/lib/mysql
+
   reverse_proxy:
     image: nginx
     ports:
@@ -28,3 +26,5 @@ services:
     volumes:
       - ./reverse_proxy.conf:/etc/nginx/conf.d/default.conf
 
+volumes:
+  graphquiz-db:
