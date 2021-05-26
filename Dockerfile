@@ -1,7 +1,12 @@
 FROM composer
+
+VOLUME [ "/app/storage/" ]
+
 WORKDIR /app
 
-COPY ./* .
+RUN ["git", "clone", "https://github.com/maastrichtlawtech/graph-quiz.git", "."]
+COPY ./.env.example ./.env.example
+
 RUN ["composer", "install"]
 
 RUN ["apk", "update"]
@@ -14,5 +19,6 @@ RUN --mount=type=ssh,id=github npm install
 RUN cp .env.example .env
 RUN docker-php-ext-install pdo pdo_mysql
 
-EXPOSE 80
-CMD php artisan key:generate && php artisan migrate:fresh --seed && php artisan serve --host=0.0.0.0 --port=8000
+EXPOSE 8000
+
+CMD php artisan key:generate && php artisan migrate:fresh --seed && php artisan cache:clear && php artisan serve --host=0.0.0.0 --port=8000
