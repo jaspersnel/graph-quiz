@@ -14,9 +14,9 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: 'db'
-      MYSQL_USER: 'umuser'
-      MYSQL_PASSWORD: '6rQR5JNT'
-      MYSQL_ROOT_PASSWORD: '6rQR5JNT'
+      MYSQL_USER: 'dbuser'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
     volumes:
       - graphquiz-db:/var/lib/mysql
 
