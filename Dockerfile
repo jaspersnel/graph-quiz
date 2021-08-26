@@ -17,6 +17,8 @@ RUN --mount=type=ssh,id=github npm install
 
 RUN docker-php-ext-install pdo pdo_mysql
 
+ADD ./database /app/database
+
 EXPOSE 8000
 
 CMD php artisan key:generate && php artisan migrate && php artisan cache:clear && php artisan serve --host=0.0.0.0 --port=8000
